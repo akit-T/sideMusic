@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  resources :contents
+  resources :series
   resources :units do
     collection {post :import}
   end

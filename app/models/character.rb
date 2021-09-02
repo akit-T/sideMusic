@@ -1,5 +1,6 @@
 class Character < ApplicationRecord
     belongs_to :unit
+    
         #importメソッド
     def self.import(file)
         CSV.foreach(file.path, headers: true) do |row|

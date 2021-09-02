@@ -1,5 +1,6 @@
 class Unit < ApplicationRecord
     has_many :characters
+    
     #importメソッド
     def self.import(file)
         CSV.foreach(file.path, headers: true) do |row|
