@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_042540) do
+ActiveRecord::Schema.define(version: 2021_09_07_083308) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2021_09_02_042540) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "albums", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "series_id", null: false
+    t.index ["series_id"], name: "index_albums_on_series_id"
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -51,6 +59,12 @@ ActiveRecord::Schema.define(version: 2021_09_02_042540) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "series", force: :cascade do |t|
@@ -71,5 +85,6 @@ ActiveRecord::Schema.define(version: 2021_09_02_042540) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "albums", "series"
   add_foreign_key "characters", "units"
 end

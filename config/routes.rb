@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+  get 'static_pages/help'
+  resources :albums
+  resources :events
   resources :contents
   resources :series
   resources :units do
